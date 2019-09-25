@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import { getLeads, deleteLead } from "../../actions/leads";
@@ -13,10 +13,11 @@ export class Leads extends Component {
   componentDidMount() {
     this.props.getLeads();
   }
+
   render() {
     return (
-      <div>
-        <h1>Leads list</h1>
+      <Fragment>
+        <h2>Leads</h2>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -24,7 +25,7 @@ export class Leads extends Component {
               <th>Name</th>
               <th>Email</th>
               <th>Message</th>
-              <th />>
+              <th />
             </tr>
           </thead>
           <tbody>
@@ -46,14 +47,13 @@ export class Leads extends Component {
             ))}
           </tbody>
         </table>
-      </div>
+      </Fragment>
     );
   }
 }
 
 const mapStateToProps = state => ({
   leads: state.leads.leads
-  // leadReducer.leads
 });
 
 export default connect(
